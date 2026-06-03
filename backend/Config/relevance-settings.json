@@ -1,0 +1,12 @@
+{
+  "Relevance": {
+    "ResultPrefix": "RESULT:",
+    "RelevantPrefix": "RESULT:RELEVANT",
+    "IrrelevantPrefix": "RESULT:IRRELEVANT",
+    "NotRelevantPrefix": "RESULT:NOT_RELEVANT",
+    "ScoreMarker": "SCORE:",
+    "SuccessStatus": "success",
+    "RelevantStatus": "Relevant",
+    "RelevantStatusUpper": "RELEVANT"
+  }
+}

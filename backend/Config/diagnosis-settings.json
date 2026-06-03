@@ -1,0 +1,12 @@
+{
+  "Diagnosis": {
+    "DefaultReason": "too_general",
+    "DefaultFeedback": "Please answer with a specific example and clear actions.",
+    "WarmModelName": "WarmModelServer Diagnosis",
+    "FallbackModelName": "MNLI Diagnosis",
+    "WarmModelVersion": "warm-server-v1",
+    "FallbackModelVersion": "current",
+    "OutputPrefix": "DIAGNOSIS_JSON:",
+   "SuccessStatus": "success"
+  }
+}

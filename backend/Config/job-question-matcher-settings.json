@@ -1,0 +1,19 @@
+{
+  "JobQuestionMatcher": {
+    "DefaultQuestionCount": 5,
+    "OutputPrefix": "RANKED_QUESTIONS_JSON:",
+    "SuccessStatus": "success",
+    "UnknownWarmServerError": "Unknown warm question matcher error.",
+    "MissingOutputError": "JobQuestionMatcher did not return RANKED_QUESTIONS_JSON."
+  },
+  "QuestionSuggestions": {
+    "DefaultSuggestionCount": 5,
+    "MatchScoreRoundingDigits": 4,
+    "MatchScoreJsonField": "_matchScore",
+    "MatchedByJsonField": "_matchedBy",
+    "MatchedByValue": "JobQuestionMatcherV2",
+    "DefaultLevel": "General",
+    "DefaultRoleFamily": "General",
+    "DefaultTagsJson": "{}"
+  }
+}

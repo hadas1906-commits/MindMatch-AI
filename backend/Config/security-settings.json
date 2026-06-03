@@ -1,0 +1,15 @@
+{
+  "Security": {
+    "JwtExpirationHours": 8,
+    "PersonalDataProtectionPurpose": "MindMatchAI.Candidate.PersonalData.v1",
+    "PasswordHashing": {
+      "SaltSize": 16,
+      "KeySize": 32,
+      "Iterations": 100000,
+      "StoredHashPartsCount": 3,
+      "IterationsPartIndex": 0,
+      "SaltPartIndex": 1,
+      "HashPartIndex": 2
+    }
+  }
+}

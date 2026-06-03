@@ -1,0 +1,181 @@
+{
+  "ScoringEngine": {
+    "ModelName": "Weighted Candidate Evidence Graph",
+    "ModelVersion": "weighted-candidate-evidence-graph-v1",
+    "CompletedInterviewStatus": "Completed",
+    "RelevantStatus": "Relevant",
+    "RequiredEvidenceCoverage": 0.65,
+    "KnownFeatures": [
+      "PracticalAbilities",
+      "Experience",
+      "ThinkingQuality",
+      "Traits",
+      "Motivation",
+      "CultureFit",
+      "Ownership",
+      "Clarity",
+      "Specificity",
+      "Impact",
+      "Responsibility",
+      "Communication"
+    ],
+    "DefaultFeaturePriorities": {
+      "PracticalAbilities": 0.30,
+      "Experience": 0.20,
+      "ThinkingQuality": 0.20,
+      "Traits": 0.10,
+      "Motivation": 0.12,
+      "CultureFit": 0.08
+    },
+    "FeatureAliases": {
+      "PracticalAbility": "PracticalAbilities",
+      "Practical Ability": "PracticalAbilities",
+      "Thinking Quality": "ThinkingQuality",
+      "Culture Fit": "CultureFit",
+      "BigFive": "Traits",
+      "Big Five": "Traits"
+    },
+    "GraphBuilder": {
+      "CriticalFeaturePriorityThreshold": 0.16,
+      "FallbackDiagnosticScore": 45.0,
+      "FinalFailedLocalScore": 15.0,
+      "DefaultLocalAnswerScore": 0.0,
+      "DefaultJobWeight": 0.05,
+      "WeakLocalWeightedScoreThreshold": 55.0,
+      "WeakReliabilityThreshold": 0.55,
+      "DefaultMatchScore": 1.0,
+      "MinimumMatchScore": 0.1,
+      "MaximumMatchScore": 1.0,
+      "MatchScorePropertyNames": [
+        "matchScore",
+        "MatchScore",
+        "score",
+        "Score"
+      ],
+      "QuestionImportanceBase": 0.55,
+      "QuestionImportancePerFeature": 0.08,
+      "QuestionImportanceMin": 0.55,
+      "QuestionImportanceMax": 1.0,
+      "ScoreMinFiveScale": 1.0,
+      "ScoreMaxFiveScale": 5.0,
+      "ScoreMinHundredScale": 0.0,
+      "ScoreMaxHundredScale": 100.0,
+      "DefaultExpectedFeatures": {
+        "ThinkingQuality": 0.34,
+        "PracticalAbilities": 0.33,
+        "Experience": 0.33
+      },
+      "RelationTypes": {
+        "JobRequiresFeature": "Requires",
+        "QuestionTestsFeature": "Tests",
+        "AnswerAnswersQuestion": "Answers"
+      },
+      "NodePrefixes": {
+        "Job": "Job",
+        "Feature": "Feature",
+        "Question": "Question",
+        "Answer": "Answer"
+      },
+      "Rounding": {
+        "FeatureWeight": 4,
+        "Score": 2,
+        "Coverage": 3,
+        "Reliability": 3,
+        "EdgeWeight": 4,
+        "AnswerReliability": 3
+      }
+    },
+    "Reliability": {
+      "FinalFailedReliability": 0.15,
+      "InitialReliability": 1.0,
+      "SecondAttemptNumber": 2,
+      "SecondAttemptPenalty": 0.12,
+      "ThirdAttemptMinimum": 3,
+      "ThirdOrMoreAttemptPenalty": 0.25,
+      "NotRelevantPenalty": 0.35,
+      "LowConfidenceMinimumPositiveValue": 0.0,
+      "LowConfidenceThreshold": 0.65,
+      "LowConfidencePenalty": 0.12,
+      "ShortAnswerWordThreshold": 20,
+      "ShortAnswerPenalty": 0.15,
+      "MinimumReliability": 0.1,
+      "MaximumReliability": 1.0
+    },
+    "FinalScore": {
+      "Weights": {
+        "PriorityWeightedFeatureScore": 0.50,
+        "ReliabilityScore": 0.18,
+        "CoverageScore": 0.14,
+        "RelevanceBehaviorScore": 0.10,
+        "CrossAnswerConsistencyScore": 0.08
+      },
+      "MinScore": 0.0,
+      "MaxScore": 100.0,
+      "RoundingDigits": 2,
+      "CategoryWeightRoundingDigits": 4,
+      "FinalFailedPenaltyPerAnswer": 8.0,
+      "MaxFinalFailedPenalty": 25.0,
+      "MinimumScoresForConsistency": 2,
+      "DefaultConsistencyScore": 60.0,
+      "ConsistencyBaseScore": 100.0,
+      "MaxStandardDeviationPenalty": 45.0
+    },
+    "Patterns": {
+      "WeakCriticalFeature": {
+        "PatternType": "WeakCriticalFeature",
+        "WeightedScoreThreshold": 55.0,
+        "EvidenceCoverageThreshold": 0.4,
+        "Impact": -6.0,
+        "Severity": "High",
+        "DescriptionTemplate": "The feature {feature} is important for the job, but the candidate did not demonstrate sufficient evidence for it."
+      },
+      "StrongExecutionWeakExplanation": {
+        "PatternType": "StrongExecutionWeakExplanation",
+        "PracticalAbilitiesFeature": "PracticalAbilities",
+        "ThinkingQualityFeature": "ThinkingQuality",
+        "PracticalAbilitiesScoreThreshold": 75.0,
+        "ThinkingQualityScoreThreshold": 60.0,
+        "Impact": -3.5,
+        "Severity": "Medium",
+        "Description": "The candidate shows strong practical execution, but has difficulty explaining the reasoning process or deeper analysis."
+      },
+      "LowReliabilityDespiteHighScores": {
+        "PatternType": "LowReliabilityDespiteHighScores",
+        "WeightedScoreThreshold": 70.0,
+        "ReliabilityThreshold": 0.55,
+        "Impact": -4.0,
+        "AffectedFeatureImpact": -1.0,
+        "Severity": "Medium",
+        "Description": "Some features have strong scores, but the evidence reliability is low due to repeated attempts, short answers, or low relevance."
+      },
+      "ConsistentHighPriorityAlignment": {
+        "PatternType": "ConsistentHighPriorityAlignment",
+        "PriorityWeightThreshold": 0.12,
+        "MinimumImportantFeatures": 3,
+        "WeightedScoreThreshold": 75.0,
+        "ReliabilityThreshold": 0.75,
+        "EvidenceCoverageThreshold": 0.6,
+        "Impact": 3.0,
+        "AffectedFeatureImpact": 1.0,
+        "Severity": "Positive",
+        "Description": "The candidate shows consistent alignment with the most important features for the job."
+      }
+    },
+    "Summary": {
+      "LatestScoresToPrint": 5,
+      "TopFeaturesCount": 3,
+      "NegativePatternsCount": 2,
+      "PositivePatternsCount": 1,
+      "ImportantFeaturePriorityThreshold": 0.12,
+      "WeakImportantFeatureScoreThreshold": 65.0,
+      "SummaryScoreRoundingDigits": 1,
+      "FallbackQuestionOrder": 999,
+      "PrintSeparator": "-------------------------",
+      "FinalScoreTemplate": "The candidate's final score for the {jobTitle} position is {finalScore}.",
+      "CalculationExplanation": "The score was calculated using a weighted evidence graph, based on job feature priorities, candidate answers, answer reliability, evidence coverage, and recurring patterns across the interview.",
+      "TopFeaturesTemplate": "The main evaluated features were: {features}.",
+      "StrongestFeatureTemplate": "The strongest feature identified in the interview was {feature}.",
+      "WeakImportantFeatureTemplate": "A relative weakness was found in an important job feature: {feature}."
+    }
+  }
+}

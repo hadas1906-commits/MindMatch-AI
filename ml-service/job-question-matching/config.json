@@ -1,0 +1,8 @@
+{
+  "modelName": "/content/drive/MyDrive/roberta_base",
+  "maxLen": 256,
+  "target": "matchScore",
+  "task": "job_question_cross_encoder_regression",
+  "version": "job_question_matcher_v2",
+  "inputPolicy": "No jobTags or desiredModels in model input"
+}

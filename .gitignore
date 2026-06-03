@@ -1,0 +1,90 @@
+# React / Node
+frontend/node_modules/
+node_modules/
+dist/
+build/
+
+# .NET / C#
+backend/bin/
+backend/obj/
+backend/.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Temporary files
+backend/TempAudio/
+TempAudio/
+*.tmp
+*.log
+
+# Local settings / secrets
+appsettings.Development.json
+.env
+.env.local
+.env.development
+.env.production
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+# Python cache and environments
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+.idea/
+
+# Python model weights - too large for regular GitHub
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.onnx
+
+# Generated outputs
+results/
+outputs/
+logs/
+*.log
+
+# Temporary audio
+TempAudio/
+*.wav
+*.mp3
+*.webm
+*.m4a
+
+# Local app settings / secrets
+backend/appsettings.Development.json
+backend/appsettings.Production.json
+appsettings.Development.json
+appsettings.Production.json
+
+# Do not ignore example settings
+!backend/appsettings.example.json
+backend/appsettings.json
+backend/appsettings.Development.json
+backend/appsettings.Production.json
+backend/appsettings.Development.json
+backend/appsettings.Production.json
+appsettings.Development.json
+appsettings.Production.json
+backend/appsettings.Development.json
+backend/appsettings.Production.json
+appsettings.Development.json
+appsettings.Production.json
+# Frontend
+frontend/node_modules/
+frontend/dist/

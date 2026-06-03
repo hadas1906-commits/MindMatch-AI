@@ -1,0 +1,41 @@
+{
+  "Routing": {
+    "OutputPrefix": "ROUTING_JSON:",
+    "SuccessStatus": "success",
+    "RoutingMode": "metadata_aware",
+    "ModelName": "LinearRouter+QuestionMetadata",
+    "ModelVersion": "router_model_22k_full_metadata_aware",
+    "BoostThreshold": 0.25,
+    "SecondaryThreshold": 0.65,
+    "MinimumAnswerLength": 40,
+    "ShortVagueAnswerLength": 120,
+    "VagueAnswers": [
+      "i don't know",
+      "dont know",
+      "not sure",
+      "no idea",
+      "maybe",
+      "nothing",
+      "i can't remember",
+      "i do not remember"
+    ],
+    "ModelKeys": {
+      "Traits": "personality",
+      "ThinkingQuality": "thinking",
+      "PracticalAbilities": "abilities",
+      "Experience": "experience"
+    },
+    "RecommendedModelNames": {
+      "Traits": ["Traits", "BIG_FIVE", "BigFive", "Personality"],
+      "ThinkingQuality": ["ThinkingQuality", "Thinking"],
+      "PracticalAbilities": ["PracticalAbilities", "Abilities"],
+      "Experience": ["Experience"]
+    },
+    "ProbabilityAliases": {
+      "personality": ["traits", "big_five", "bigfive", "personality"],
+      "thinking": ["thinking_quality", "thinkingquality", "thinking"],
+      "abilities": ["practical_abilities", "practicalabilities", "abilities"],
+      "experience": ["experience"]
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "thresholds": {
+    "HARD_OFFTOPIC_T": 0.05,
+    "SOFT_OFFTOPIC_T": 0.12,
+    "WEAK_NLI_T": 0.2,
+    "KNOWLEDGE_GAP_T": 0.62,
+    "EVASIVE_T": 0.55,
+    "TIE_MARGIN_T": 0.03,
+    "TIE_CONF_T": 0.55,
+    "SOFTMAX_ALPHA": 8.0,
+    "MIN_RECOVERY_TOKENS": 18,
+    "DEF_MAX_WORDS": 25,
+    "EVIDENCE_MIN_SIM": 0.35,
+"NONE_MATCH_CONF_T": 0.30,
+"NONE_MATCH_ENTAIL_T": 0.18
+
+  },
+  "regex": {
+    "KG_STRONG": "\\b(i\\s*(do\\s*not|don't)\\s*know|no\\s*idea|can't\\s*answer|have\\s*no\\s*experience|haven't\\s*(worked|learned))\\b",
+    "KG_SOFT": "\\b(not\\s*sure|not\\s*certain|don't\\s*remember|not\\s*familiar\\s*enough)\\b",
+    "RECOVERY": "\\b(but|however|though|still|let\\s*me\\s*try|i\\s*would\\s*approach)\\b",
+    "DEF": "\\b(is|means|refers\\s+to|defined\\s+as)\\b",
+    "CONCRETE": "\\b(for example|e\\.g\\.|example|steps|first|second|third|then|because|tradeoff|i would|we would|architecture|component|design|implement)\\b",
+    "NO_EXAMPLE": "\\b(never happened|has not happened|didn't happen|i (have not|haven't) had|i (have not|haven't) experienced|i (have not|haven't) faced|can't think of|cannot think of|no real example|don't have a real example|i don't have an example|i have no example|no example)\\b"
+  },
+  "asks_steps_phrases": [
+    "how would you",
+    "what would you do",
+    "describe how",
+    "walk me through",
+    "steps",
+    "approach",
+    "plan",
+    "debug",
+    "handle",
+    "resolve"
+  ],
+  "prototypes": {
+    "EVASIVE": [
+      "There's nothing you can do.",
+      "It depends on the situation.",
+      "It happens sometimes.",
+      "It's hard to say.",
+      "That can happen.",
+      "There's no clear answer.",
+      "It varies."
+    ],
+    "KNOWLEDGE_GAP": [
+      "I don't know.",
+      "I'm not familiar with that.",
+      "I haven't learned this.",
+      "I have no experience with that.",
+      "I'm not sure what that is."
+    ]
+  },
+  "premise_template": "Question: {q}\nAnswer: {a}",
+  "hypotheses": {
+    "topic_drift": "The answer discusses a completely different subject area than the question.",
+    "task_mismatch": "The question asks for a system design/plan, but the answer gives a general description or list instead of a design.",
+    "abstraction_mismatch": "The answer is at the wrong level of detail for the question, being too vague or overly specific.",
+    "constraint_or_assumption_mismatch": "The answer ignores, changes, or adds constraints or assumptions compared to the question.",
+    "ambiguity_resolution": "The question is ambiguous and the answer follows a different interpretation than what the question likely intended.",
+    "incomplete_coverage": "The answer covers only part of the question and misses important required aspects.",
+    "concept_confusion": "The answer confuses related concepts or mixes up definitions.",
+    "knowledge_gap": "The answer indicates lack of knowledge or skill rather than misunderstanding the question.",
+    "evasive_nonanswer": "The answer is evasive or non-informative and does not provide a concrete response to the question.",
+    "no_example": "The answer indicates the candidate cannot provide a relevant real example from their experience.",
+    "none_match": "None of the predefined reasons fit the Q/A reliably (low confidence or weak entailment)."
+  },
+  "rewrite_rules": {
+    "topic_drift": {
+      "template": "{q} Please answer specifically about this question (not a different topic).",
+      "note": "scope_reminder"
+    },
+    "evasive_nonanswer": {
+      "template": "{q} Please be specific: give one concrete example, what you did, and the outcome.",
+      "note": "force_specific_example_action_outcome"
+    },
+    "task_mismatch": {
+      "template": "{q} Please answer as a step-by-step plan (what you would do first, second, third).",
+      "note": "force_steps_plan"
+    },
+    "abstraction_mismatch": {
+      "template": "{q} Please answer at a practical level: 3–5 clear points with enough detail to be actionable.",
+      "note": "force_practical_detail_3to5"
+    },
+    "constraint_or_assumption_mismatch": {
+      "template": "{q} Please follow exactly the constraints in the question. If you need to assume anything, state your assumption explicitly.",
+      "note": "respect_constraints_state_assumptions"
+    },
+    "ambiguity_resolution": {
+      "template": "{q} If this can be interpreted in more than one way, state your interpretation briefly and then answer.",
+      "note": "state_interpretation_then_answer"
+    },
+    "incomplete_coverage": {
+      "template": "{q} Please cover all parts: (1) what happened, (2) what you did, (3) why, (4) result.",
+      "note": "coverage_checklist_4parts"
+    },
+    "concept_confusion": {
+      "template": "{q} Before answering, define the key terms you use (1 sentence each), then answer.",
+      "note": "define_terms_then_answer"
+    },
+    "knowledge_gap": {
+      "template": "{q} If you’re not sure, say what you know, what you don’t know, and how you would find the answer or proceed.",
+      "note": "allow_uncertainty_require_next_steps"
+    },
+    "no_example": {
+      "template": "{q} If you don’t have a real example, describe the closest similar situation you had, or a hypothetical case: (1) what would you do, (2) why, (3) expected result.",
+      "note": "allow_closest_or_hypothetical"
+    },
+    "none_match": {
+      "template": "{q} Please answer clearly and directly: (1) short answer, (2) 2–4 bullet points with details, (3) one concrete example.",
+      "note": "generic_clarify_structure"
+    }
+  },
+  "why_templates": {
+    "topic_drift": "The answer appears to address a different topic than the question.",
+    "task_mismatch": "The question asks for concrete steps, a plan, or a decision, but the answer only defines the topic or gives generic background without proposing steps/plan/decision.",
+    "abstraction_mismatch": "The answer is at a mismatched level of detail (too vague or overly specific) relative to what the question asks.",
+    "constraint_or_assumption_mismatch": "The answer likely ignores or changes a constraint/assumption implied by the question.",
+    "ambiguity_resolution": "The question has multiple plausible meanings, and the answer clearly addresses a different meaning than the intended one.",
+    "incomplete_coverage": "The answer covers only part of the question and misses important required aspects.",
+    "concept_confusion": "The answer suggests confusion between related concepts.",
+    "knowledge_gap": "The answer suggests lack of knowledge/skill rather than misunderstanding the question.",
+    "evasive_nonanswer": "The answer is evasive/generic and does not provide a concrete, actionable response to the question.",
+    "no_example": "The answer says they cannot provide a relevant real example from their experience.",
+    "none_match": "None of the predefined reasons fit confidently; the model signals low confidence."
+  },
+  "reason_priority": {
+    "topic_drift": 0,
+    "task_mismatch": 1,
+    "abstraction_mismatch": 2,
+    "constraint_or_assumption_mismatch": 3,
+    "ambiguity_resolution": 4,
+    "incomplete_coverage": 5,
+    "concept_confusion": 6,
+    "knowledge_gap": 7,
+    "no_example": 8,
+    "evasive_nonanswer": 9,
+    "none_match": 10
+  },
+  "evidence": {
+    "topk_default": 2,
+    "topk_incomplete_coverage": 3,
+    "max_chars": 220
+  },
+  "tie": {
+    "max_reasons_returned": 2
+  }
+}

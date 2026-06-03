@@ -1,0 +1,14 @@
+{
+  "ModelServer": {
+    "Endpoints": {
+      "Relevance": "/relevance",
+      "Diagnosis": "/diagnosis",
+      "Routing": "/routing",
+      "Diagnostic": "/diagnostic",
+      "JobQuestionMatch": "/job-question-match",
+      "TranscribeFile": "/transcribe-file",
+      "Warmup": "/warmup",
+      "Health": "/health"
+    }
+  }
+}

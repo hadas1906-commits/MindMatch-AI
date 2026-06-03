@@ -1,0 +1,32 @@
+{
+  "DerivedCategories": {
+    "ModelName": "DerivedCategoryFormula",
+    "ModelVersion": "weighted-coverage-v1",
+    "ScoreScale": {
+      "Min": 1.0,
+      "Max": 5.0,
+      "ReverseTraitBase": 6.0,
+      "RoundingDigits": 3
+    },
+    "Categories": {
+      "Motivation": {
+        "C": 0.28,
+        "O": 0.18,
+        "responsibility": 0.18,
+        "ownership": 0.12,
+        "impact": 0.10,
+        "depth": 0.08,
+        "exposure": 0.06
+      },
+      "CultureFit": {
+        "A": 0.30,
+        "E": 0.18,
+        "clarity": 0.16,
+        "emotional_stability": 0.12,
+        "ownership": 0.10,
+        "responsibility": 0.08,
+        "logic": 0.06
+      }
+    }
+  }
+}

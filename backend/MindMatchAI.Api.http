@@ -1,0 +1,6 @@
+@MindMatchAI.Api_HostAddress = http://localhost:5275
+
+GET {{MindMatchAI.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

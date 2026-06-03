@@ -1,0 +1,11 @@
+{
+  "PythonRunner": {
+    "DefaultTimeoutMilliseconds": 60000,
+    "PythonIoEncodingVariable": "PYTHONIOENCODING",
+    "PythonIoEncodingValue": "utf-8",
+    "PythonUtf8Variable": "PYTHONUTF8",
+    "PythonUtf8Value": "1",
+    "SuccessExitCode": 0,
+    "ErrorExitCode": -1
+  }
+}

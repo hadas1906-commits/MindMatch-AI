@@ -1,0 +1,8 @@
+{
+  "InterviewFlow": {
+    "MaxAttemptsPerQuestion": 3,
+    "MetadataLogMaxLength": 400,
+    "RelevanceModelName": "SBERT+RoBERTa",
+    "RelevanceModelVersion": "current"
+  }
+}
